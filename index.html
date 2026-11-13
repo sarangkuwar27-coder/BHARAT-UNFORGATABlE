@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Plan thoughtful journeys across India with Bharat Unforgettable. Find stays, experiences, and the people who make every place memorable.">
+  <title>Bharat Unforgettable — Find your kind of India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #173c35;
+      --ink-soft: #536761;
+      --cream: #f7f5ef;
+      --white: #fffefa;
+      --line: #e8e6df;
+      --orange: #d86f45;
+      --orange-dark: #b8502e;
+      --sage: #dfe9df;
+      --gold: #e9bd72;
+      --shadow: 0 18px 50px rgba(29, 54, 45, .11);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+    .topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.04em; line-height: 1.05; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: #fff; font-family: var(--serif); font-size: 21px; }
+    .brand-name { font-size: 15px; }
+    .brand-name span { display: block; font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: .17em; color: var(--ink-soft); font-weight: 600; }
+    .nav { display: flex; align-items: center; gap: 34px; color: #52645e; font-size: 13px; font-weight: 600; }
+    .nav a:hover { color: var(--orange-dark); }
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+    .text-button { border: 0; background: transparent; color: var(--ink); font-size: 13px; font-weight: 700; padding: 12px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 0; border-radius: 999px; padding: 13px 21px; background: var(--ink); color: white; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: #0d2c27; }
+    .button-orange { background: var(--orange); }
+    .button-orange:hover { background: var(--orange-dark); }
+    .menu-toggle { display: none; border: 1px solid var(--line); width: 42px; height: 42px; border-radius: 50%; color: var(--ink); background: var(--white); font-size: 20px; }
+    .hero { position: relative; min-height: 590px; overflow: hidden; border-radius: 26px; background: #47665a; color: white; isolation: isolate; }
+    .hero::before { content: ""; position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(14, 41, 35, .83) 0%, rgba(20, 49, 40, .54) 48%, rgba(16, 35, 32, .05) 100%), url("https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=2200&q=88") center 48% / cover; }
+    .hero::after { content: ""; position: absolute; z-index: -1; inset: auto 0 0; height: 35%; background: linear-gradient(0deg, rgba(15, 37, 31, .38), transparent); }
+    .hero-content { width: min(700px, 70%); padding: 88px 0 170px 7.5%; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #f1d8a8; text-transform: uppercase; letter-spacing: .17em; font-size: 10px; font-weight: 700; }
+    .eyebrow::before { content: ""; display: inline-block; width: 25px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 670px; margin: 21px 0 18px; font: 600 clamp(44px, 6.5vw, 78px)/1.04 var(--serif); letter-spacing: -.045em; }
+    .hero-copy { max-width: 455px; margin: 0; color: rgba(255,255,255,.86); font-size: 15px; line-height: 1.75; }
+    .hero-caption { position: absolute; bottom: 138px; right: 38px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.77); writing-mode: vertical-rl; }
+    .search-card { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); width: calc(100% - 76px); padding: 17px 18px 18px; background: var(--white); color: var(--ink); border-radius: 18px; box-shadow: 0 18px 48px rgba(0,0,0,.19); }
+    .search-tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--line); padding: 0 7px 12px; margin-bottom: 14px; }
+    .tab { position: relative; padding: 0 2px; border: 0; color: #87918b; background: transparent; font-size: 12px; font-weight: 700; }
+    .tab.active { color: var(--ink); }
+    .tab.active::after { content: ""; position: absolute; bottom: -13px; left: 0; right: 0; height: 2px; background: var(--orange); }
+    .search-fields { display: grid; grid-template-columns: 1.35fr 1fr 1fr .9fr auto; align-items: center; }
+    .field { padding: 5px 18px; border-right: 1px solid var(--line); min-width: 0; }
+    .field:first-child { padding-left: 7px; }
+    .field label { display: block; margin-bottom: 7px; color: #87918b; text-transform: uppercase; letter-spacing: .11em; font-size: 9px; font-weight: 700; }
+    .field input, .field select { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; font-weight: 600; }
+    .field input::placeholder { color: #a3aaa4; font-weight: 500; }
+    .search-submit { justify-self: end; margin-left: 17px; min-width: 125px; }
+    .search-result { display: none; margin: 13px 7px 0; padding: 11px 14px; border-radius: 10px; background: #edf4ed; color: #34584e; font-size: 12px; line-height: 1.5; }
+    .search-result.show { display: block; }
+    .section { padding: 100px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 31px; }
+    .section-kicker { margin-bottom: 10px; color: var(--orange-dark); text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 700; }
+    h2 { margin-bottom: 0; font: 600 clamp(33px, 4vw, 47px)/1.12 var(--serif); letter-spacing: -.035em; }
+    .section-intro { max-width: 465px; margin: 12px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+    .under-link { display: inline-flex; align-items: center; gap: 9px; padding-bottom: 7px; border-bottom: 1px solid #a5b2aa; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .under-link span { color: var(--orange); font-size: 17px; }
+    .destinations { display: grid; grid-template-columns: 1.18fr 1fr 1fr 1fr; gap: 17px; }
+    .destination { position: relative; min-height: 350px; overflow: hidden; border-radius: 17px; color: white; background: #66756c; }
+    .destination:first-child { min-height: 400px; }
+    .destination img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+    .destination:hover img { transform: scale(1.045); }
+    .destination::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(0deg, rgba(12, 31, 27, .82), transparent); }
+    .destination-info { position: absolute; z-index: 1; bottom: 20px; left: 20px; right: 20px; }
+    .destination-info small { display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.8); font-size: 9px; font-weight: 700; }
+    .destination-info h3 { margin: 0; font: 600 24px var(--serif); }
+    .destination-info p { margin: 7px 0 0; color: rgba(255,255,255,.84); font-size: 11px; }
+    .section-soft { background: #eef1e9; }
+    .experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: center; }
+    .experience-image { position: relative; min-height: 460px; border-radius: 18px; overflow: hidden; background: #d8c6a3; }
+    .experience-image img { width: 100%; height: 100%; min-height: 460px; object-fit: cover; display: block; }
+    .image-note { position: absolute; right: 18px; bottom: 18px; padding: 12px 15px; border-radius: 12px; background: rgba(255,254,250,.95); box-shadow: var(--shadow); font-size: 11px; }
+    .image-note strong { display: block; margin-bottom: 4px; font: 600 16px var(--serif); }
+    .experience-copy h2 { margin-bottom: 17px; }
+    .experience-copy > p { color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+    .benefits { display: grid; gap: 18px; margin: 27px 0 30px; }
+    .benefit { display: grid; grid-template-columns: 39px 1fr; gap: 13px; align-items: start; }
+    .benefit-icon { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 50%; background: #dce8dc; color: var(--ink); font-size: 16px; }
+    .benefit strong { display: block; margin: 2px 0 5px; font-size: 13px; }
+    .benefit span { display: block; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+    .story-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .story-card { position: relative; min-height: 350px; overflow: hidden; border-radius: 18px; background: #725a3d; color: white; }
+    .story-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .story-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(14,34,28,.85), rgba(14,34,28,.03) 78%); }
+    .story-copy { position: absolute; z-index: 1; left: 27px; right: 27px; bottom: 26px; }
+    .story-copy small { color: #f0d8a9; text-transform: uppercase; letter-spacing: .14em; font-size: 9px; font-weight: 700; }
+    .story-copy h3 { max-width: 430px; margin: 9px 0 9px; font: 600 30px/1.12 var(--serif); }
+    .story-copy p { margin: 0; max-width: 430px; color: rgba(255,255,255,.8); font-size: 12px; line-height: 1.6; }
+    .quote-band { padding: 82px 0; text-align: center; background: var(--ink); color: white; }
+    .quote-mark { color: var(--gold); font: 58px/1 var(--serif); }
+    .quote-band blockquote { max-width: 790px; margin: 14px auto 21px; font: 500 clamp(24px, 3.5vw, 37px)/1.35 var(--serif); }
+    .quote-band p { margin: 0; color: #b7c9c1; text-transform: uppercase; letter-spacing: .14em; font-size: 9px; font-weight: 700; }
+    .newsletter { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; padding: 48px 54px; border-radius: 19px; background: #e6ebdf; }
+    .newsletter h2 { font-size: 34px; }
+    .newsletter p { margin: 9px 0 0; color: var(--ink-soft); font-size: 12px; }
+    .newsletter-form { display: flex; gap: 9px; padding: 6px; border: 1px solid #d2dbd0; border-radius: 999px; background: var(--white); }
+    .newsletter-form input { width: 210px; padding: 0 11px; border: 0; outline: 0; background: transparent; font-size: 12px; }
+    .newsletter-note { grid-column: 2; min-height: 15px; margin: -21px 0 0; text-align: right; color: #3d6557; font-size: 10px; }
+    footer { padding: 54px 0 27px; }
+    .footer-main { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 35px; padding-bottom: 38px; }
+    .footer-brand p { max-width: 255px; margin: 15px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.7; }
+    .footer-col strong { display: block; margin: 3px 0 15px; font-size: 11px; }
+    .footer-col a { display: block; width: fit-content; margin: 10px 0; color: var(--ink-soft); font-size: 11px; }
+    .footer-col a:hover { color: var(--orange-dark); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 19px; border-top: 1px solid var(--line); color: #819089; font-size: 10px; }
+    .toast { position: fixed; z-index: 10; right: 22px; bottom: 22px; max-width: min(350px, calc(100% - 44px)); transform: translateY(140%); padding: 14px 18px; border-radius: 13px; background: var(--ink); box-shadow: var(--shadow); color: white; font-size: 12px; line-height: 1.5; transition: transform .3s ease; }
+    .toast.show { transform: translateY(0); }
+    @media (max-width: 950px) {
+      .nav { gap: 18px; }
+      .search-fields { grid-template-columns: 1.2fr 1fr 1fr auto; }
+      .field:nth-child(4) { display: none; }
+      .search-submit { min-width: auto; }
+      .destinations { grid-template-columns: repeat(2, 1fr); }
+      .destination, .destination:first-child { min-height: 330px; }
+      .experience-grid { gap: 35px; }
+      .newsletter { padding: 37px; }
+      .newsletter-form input { width: 150px; }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 30px, 520px); }
+      .topbar { height: 70px; }
+      .menu-toggle { display: block; }
+      .nav { display: none; position: absolute; z-index: 5; top: 62px; left: 15px; right: 15px; padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); box-shadow: var(--shadow); }
+      .nav.open { display: grid; gap: 17px; }
+      .nav-actions .text-button { display: none; }
+      .nav-actions .button { padding: 11px 14px; font-size: 11px; }
+      .hero { min-height: 680px; border-radius: 19px; }
+      .hero::before { background-position: 58% center; }
+      .hero-content { width: 100%; padding: 62px 25px 0; }
+      h1 { max-width: 420px; font-size: clamp(44px, 13vw, 65px); }
+      .hero-copy { max-width: 350px; font-size: 13px; }
+      .hero-caption { display: none; }
+      .search-card { width: calc(100% - 26px); bottom: 13px; padding: 14px 13px; }
+      .search-tabs { gap: 19px; }
+      .search-fields { grid-template-columns: 1fr 1fr; gap: 8px 0; }
+      .field { padding: 8px 10px; }
+      .field:first-child { padding-left: 10px; }
+      .field:nth-child(2) { border-right: 0; }
+      .field:nth-child(3) { border-right: 1px solid var(--line); }
+      .field:nth-child(4) { display: block; }
+      .field:nth-child(4) { border-right: 0; }
+      .search-submit { grid-column: 1 / -1; width: 100%; margin: 7px 0 0; }
+      .section { padding: 70px 0; }
+      .section-head { align-items: start; flex-direction: column; margin-bottom: 23px; }
+      .destinations { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .destination, .destination:first-child { min-height: 250px; }
+      .destination-info { bottom: 14px; left: 13px; right: 13px; }
+      .destination-info h3 { font-size: 19px; }
+      .destination-info p { font-size: 10px; }
+      .experience-grid, .story-grid { grid-template-columns: 1fr; gap: 28px; }
+      .experience-image, .experience-image img { min-height: 330px; }
+      .story-card { min-height: 290px; }
+      .quote-band { padding: 65px 20px; }
+      .newsletter { grid-template-columns: 1fr; gap: 22px; padding: 29px 22px; }
+      .newsletter h2 { font-size: 29px; }
+      .newsletter-form { width: 100%; }
+      .newsletter-form input { width: 100%; min-width: 0; }
+      .newsletter-note { grid-column: 1; margin: -13px 0 0; text-align: left; }
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 29px 19px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#" aria-label="Bharat Unforgettable home">
+      <span class="brand-mark">B</span>
+      <span class="brand-name">Bharat Unforgettable<span>Journeys, thoughtfully found</span></span>
+    </a>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a href="#destinations">Destinations</a>
+      <a href="#experiences">Our way</a>
+      <a href="#stories">Travel stories</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="text-button" type="button" data-toast="Sign-in will be available when your account service is connected.">Log in</button>
+      <a class="button" href="#search">Plan a trip <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="eyebrow">Go beyond the expected</span>
+        <h1 id="hero-title">Find your kind of India.</h1>
+        <p class="hero-copy">From slow mornings in the hills to nights that glow in the desert, find the places and people that stay with you.</p>
+      </div>
+      <span class="hero-caption">The Taj Mahal · Agra, Uttar Pradesh</span>
+      <form class="search-card" id="search">
+        <div class="search-tabs" role="tablist" aria-label="What are you looking for?">
+          <button class="tab active" type="button" role="tab" aria-selected="true" data-kind="stays">Stays</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-kind="experiences">Experiences</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-kind="flights">Flights</button>
+        </div>
+        <div class="search-fields">
+          <div class="field">
+            <label for="destination">Where to?</label>
+            <input id="destination" name="destination" type="text" placeholder="City, region or stay" autocomplete="off" required>
+          </div>
+          <div class="field">
+            <label for="start-date" id="start-label">Check in</label>
+            <input id="start-date" name="start" type="date">
+          </div>
+          <div class="field">
+            <label for="end-date" id="end-label">Check out</label>
+            <input id="end-date" name="end" type="date">
+          </div>
+          <div class="field">
+            <label for="travelers" id="traveler-label">Travelers</label>
+            <select id="travelers" name="travelers">
+              <option>2 travelers</option><option>1 traveler</option><option>3 travelers</option><option>4 travelers</option><option>5+ travelers</option>
+            </select>
+          </div>
+          <button class="button button-orange search-submit" type="submit"><span aria-hidden="true">⌕</span> Search</button>
+        </div>
+        <div class="search-result" id="search-result" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="shell section" id="destinations">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">A country of many worlds</p>
+          <h2>Where will your story begin?</h2>
+          <p class="section-intro">Start with a feeling. We’ll help you find the corner of India that feels like it was waiting for you.</p>
+        </div>
+        <a class="under-link" href="#search">Explore all places <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="destinations">
+        <a class="destination" href="#search" data-place="Jaipur, Rajasthan">
+          <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=900&q=82" alt="Ornate pink sandstone palace in Jaipur" loading="lazy">
+          <div class="destination-info"><small>Rajasthan · Culture</small><h3>Jaipur</h3><p>Colour, craft & courtyard evenings</p></div>
+        </a>
+        <a class="destination" href="#search" data-place="Ladakh">
+          <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=82" alt="Mountain road through the Himalayas" loading="lazy">
+          <div class="destination-info"><small>Himalayas · Outdoors</small><h3>Ladakh</h3><p>Wide skies, quieter roads</p></div>
+        </a>
+        <a class="destination" href="#search" data-place="Kerala">
+          <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=82" alt="Houseboat floating on Kerala backwaters" loading="lazy">
+          <div class="destination-info"><small>Kerala · Slow travel</small><h3>Kerala</h3><p>Backwaters & greener days</p></div>
+        </a>
+        <a class="destination" href="#search" data-place="Goa">
+          <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=82" alt="Palm trees along a tropical beach" loading="lazy">
+          <div class="destination-info"><small>Goa · Coast</small><h3>Goa</h3><p>Salt air, small cafés, no rush</p></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="experiences">
+      <div class="shell experience-grid">
+        <div class="experience-image">
+          <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=1200&q=85" alt="Warmly lit traditional haveli courtyard" loading="lazy">
+          <div class="image-note"><strong>Stay somewhere with a story</strong>Handpicked homes, hosted by locals</div>
+        </div>
+        <div class="experience-copy">
+          <p class="section-kicker">The Bharat Unforgettable way</p>
+          <h2>Travel that feels like being let in.</h2>
+          <p>Good trips are made of more than landmarks. We bring together thoughtful stays, local guides, and experiences shaped by the people who know a place best.</p>
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true">⌂</span><div><strong>Stays with a sense of place</strong><span>From family-run homestays to design-led hideaways, every stay is chosen for its character.</span></div></div>
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true">✳</span><div><strong>Local-led experiences</strong><span>Meet makers, cooks, naturalists and storytellers who make a destination come alive.</span></div></div>
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true">♡</span><div><strong>Trips at your own pace</strong><span>Build a journey that leaves room for the unexpected and time to enjoy it.</span></div></div>
+          </div>
+          <a class="button" href="#search">Find your next stay <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="stories">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">A few ways to wander</p>
+          <h2>Journeys worth taking slowly.</h2>
+        </div>
+        <a class="under-link" href="#search">See all journeys <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="story-grid">
+        <article class="story-card">
+          <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=84" alt="Desert fort and old city in Rajasthan" loading="lazy">
+          <div class="story-copy"><small>6 days · Rajasthan</small><h3>From blue city mornings to desert skies</h3><p>A thoughtful route through Jodhpur, Jaisalmer and the quiet in between.</p></div>
+        </article>
+        <article class="story-card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=84" alt="Mountain valley at golden hour" loading="lazy">
+          <div class="story-copy"><small>5 days · Himachal Pradesh</small><h3>Little villages, long mountain lunches</h3><p>Take the scenic road and let the mountains set the pace.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band">
+      <div class="shell">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <blockquote>The best part wasn’t the places we saw. It was how welcome we felt in each one.</blockquote>
+        <p>Meera & Arjun · guests in Rajasthan</p>
+      </div>
+    </section>
+
+    <section class="shell section">
+      <div class="newsletter">
+        <div><p class="section-kicker">A little inspiration, now and then</p><h2>Good places find their way to you.</h2><p>New journeys, local finds and thoughtful travel notes. No noise.</p></div>
+        <form class="newsletter-form" id="newsletter-form"><input type="email" aria-label="Email address" placeholder="Your email address" required><button class="button button-orange" type="submit">Sign me up</button></form>
+        <p class="newsletter-note" id="newsletter-note" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="#"><span class="brand-mark">B</span><span class="brand-name">Bharat Unforgettable<span>Journeys, thoughtfully found</span></span></a>
+        <p>Find your kind of India. Thoughtful journeys, memorable stays and local experiences, all in one place.</p>
+      </div>
+      <div class="footer-col"><strong>Discover</strong><a href="#destinations">Destinations</a><a href="#experiences">Stays & experiences</a><a href="#stories">Journey ideas</a></div>
+      <div class="footer-col"><strong>Help</strong><a href="#search">Plan a trip</a><a href="mailto:hello@bharatunforgettable.example">Contact us</a><a href="#" data-toast="Help center content will be added soon.">Help center</a></div>
+      <div class="footer-col"><strong>Travel thoughtfully</strong><a href="#" data-toast="Our travel principles are coming soon.">Our principles</a><a href="#" data-toast="Host tools are coming soon.">Become a host</a><a href="#" data-toast="Social links will be added soon.">Instagram ↗</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Bharat Unforgettable</span><span>Made for journeys with a little more meaning.</span></div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll(".tab");
+      var startLabel = document.getElementById("start-label");
+      var endLabel = document.getElementById("end-label");
+      var travelerLabel = document.getElementById("traveler-label");
+      var travelerSelect = document.getElementById("travelers");
+      var destination = document.getElementById("destination");
+      var searchResult = document.getElementById("search-result");
+      var searchForm = document.getElementById("search");
+      var toast = document.getElementById("toast");
+      var toastTimer;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(function () { toast.classList.remove("show"); }, 3600);
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          tabs.forEach(function (item) {
+            item.classList.remove("active");
+            item.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+          var kind = tab.getAttribute("data-kind");
+          if (kind === "flights") {
+            startLabel.textContent = "Depart";
+            endLabel.textContent = "Return";
+            travelerLabel.textContent = "Passengers";
+            destination.placeholder = "From — to";
+          } else if (kind === "experiences") {
+            startLabel.textContent = "Date";
+            endLabel.textContent = "Flexible";
+            travelerLabel.textContent = "Guests";
+            destination.placeholder = "City or experience";
+          } else {
+            startLabel.textContent = "Check in";
+            endLabel.textContent = "Check out";
+            travelerLabel.textContent = "Travelers";
+            destination.placeholder = "City, region or stay";
+          }
+          searchResult.classList.remove("show");
+        });
+      });
+
+      searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var selected = document.querySelector(".tab.active").getAttribute("data-kind");
+        var place = destination.value.trim();
+        var people = travelerSelect.value;
+        var start = document.getElementById("start-date").value;
+        var end = document.getElementById("end-date").value;
+        var category = selected === "flights" ? "flight options" : (selected === "experiences" ? "local experiences" : "handpicked stays");
+        var dates = start ? " from " + start + (end ? " to " + end : "") : "";
+        searchResult.textContent = "Your " + category + " search for " + place + dates + " (" + people + ") is ready. Live inventory and booking will appear when connected.";
+        searchResult.classList.add("show");
+      });
+
+      document.querySelectorAll("[data-place]").forEach(function (card) {
+        card.addEventListener("click", function () {
+          destination.value = card.getAttribute("data-place");
+        });
+      });
+
+      document.querySelectorAll("[data-toast]").forEach(function (item) {
+        item.addEventListener("click", function (event) {
+          event.preventDefault();
+          showToast(item.getAttribute("data-toast"));
+        });
+      });
+
+      document.getElementById("newsletter-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        document.getElementById("newsletter-note").textContent = "Thanks — newsletter signup will be enabled when email service is connected.";
+        event.currentTarget.reset();
+      });
+
+      var menu = document.querySelector(".menu-toggle");
+      var nav = document.getElementById("main-nav");
+      menu.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        menu.setAttribute("aria-expanded", String(open));
+        menu.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("open");
+          menu.setAttribute("aria-expanded", "false");
+        });
+      });
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }());
+  </script>
+</body>
+</html>
